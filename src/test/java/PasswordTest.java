@@ -14,7 +14,6 @@ class PasswordTest {
         String testPassword = "123abcDEF%&/";
 
         // WHEN
-
         boolean actual = Password.validatePassword(testPassword);
 
         // THEN
@@ -27,7 +26,6 @@ class PasswordTest {
 
         // GIVEN
         String testPassword = "1aB/";
-
         // WHEN
 
         boolean actual = Password.validatePassword(testPassword);
@@ -105,7 +103,6 @@ class PasswordTest {
 
         // THEN
         assertFalse(actual);
-
     }
 
 }
