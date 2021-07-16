@@ -3,6 +3,16 @@ import java.util.regex.Pattern;
 
 public class Password {
 
+    public static boolean[] validatePasswordList(String[] listOfPaswords) {
+        boolean[] validatedList = new boolean[listOfPaswords.length];
+
+        for(int i = 0; i < listOfPaswords.length; i++){
+            validatedList[i] = validatePassword(listOfPaswords[i]);
+        }
+
+        return validatedList;
+    }
+
     public static boolean validatePassword(String password) {
         boolean[] isValid = new boolean[6];
 
