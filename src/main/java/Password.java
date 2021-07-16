@@ -38,7 +38,12 @@ public class Password {
 
     private static boolean checkLength(String password) {
         int minimumLength = 8;
-        return password.length() >= minimumLength;
+        if(password.length() >= minimumLength) {
+
+            return true;
+        }
+        MessageService.messageLengthCheck();
+        return false;
     }
 
     private static boolean checkCapitalLetters(String password) {
@@ -49,6 +54,7 @@ public class Password {
                 return true;
             }
         }
+        MessageService.messageCapitalCheck();
         return false;
     }
 
@@ -60,6 +66,7 @@ public class Password {
                 return true;
             }
         }
+        MessageService.messageLowercasehCheck();
         return false;
     }
 
@@ -71,6 +78,7 @@ public class Password {
                 return true;
             }
         }
+        MessageService.messageNumbersCheck();
         return false;
     }
 
@@ -78,14 +86,18 @@ public class Password {
 
         Pattern p = Pattern.compile("[^A-Za-z0-9]");
         Matcher m = p.matcher(password);
-
-        return m.find();
+        if (m.find()) {
+            return true;
+        }
+        MessageService.messageSpecialCharCheck();
+        return false;
     }
 
 
     private static boolean checkSpaces(String password) {
 
         if (password.contains(" ")) {
+            MessageService.messageNoSpacesCheck();
             return false;
         }
         return true;

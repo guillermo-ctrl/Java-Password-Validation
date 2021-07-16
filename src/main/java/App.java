@@ -15,13 +15,8 @@ public class App {
         if (Password.validatePassword(password)) {
             System.out.println("Password gültig.");
             isPasswordValid = true;
-        } else {
-            System.out.println("Password ist nicht komplex genug.");
         }
     }
-
-
-
 
     }
 }
