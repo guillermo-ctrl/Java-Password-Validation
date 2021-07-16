@@ -105,4 +105,33 @@ class PasswordTest {
         assertFalse(actual);
     }
 
+    @Test
+    @DisplayName("Password validation: validiate a List of Passwords")
+    public void testPasswordList() {
+        // GIVEN
+        String[] listOfPasswords = {"123abcDEF%&/","123abcDEF%&/","123abcDEF%&/"};
+
+        // WHEN
+        boolean[] actual = Password.validatePasswordList(listOfPasswords);
+
+        // THEN
+        boolean[] expected = {true, true, true};
+        assertArrayEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("Password validation: validiate a List of wrong Passwords")
+    public void testWrongPasswordList() {
+        // GIVEN
+        String[] listOfPasswords = {"1aB/","123abcdef%&/","123ABCDEF%&/", "xxxabcDEF%&/", "123abcDEFxxx", "123abc DEF%&/"};
+
+        // WHEN
+        boolean[] actual = Password.validatePasswordList(listOfPasswords);
+
+        // THEN
+        boolean[] expected = {false, false, false, false, false, false };
+        assertArrayEquals(expected, actual);
+    }
+
+
+
 }
